@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 export default function Home({
   users,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(users);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     //@ts-ignore
     const name = event.target.name.value;
@@ -36,12 +35,11 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  console.log(prisma);
   const users = await getAllUsers(prisma);
-  console.log(users);
   return {
     props: {
       users,
     },
+    revalidate: 10,
   };
 }

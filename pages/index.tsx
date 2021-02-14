@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import { InferGetStaticPropsType } from "next";
 import axios from "axios";
-
+import { PrismaClient } from "@prisma/client";
 import { getAllUsers } from "../src/db/user";
 
 const prisma = new PrismaClient();
@@ -10,7 +9,9 @@ export default function Home({
   users,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    //@ts-ignore
     const name = event.target.name.value;
+    //@ts-ignore
     const email = event.target.email.value;
     await axios.post("/api/user", { name, email });
   };

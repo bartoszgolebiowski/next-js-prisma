@@ -26,7 +26,7 @@ export const createUser = async (
   client: PrismaClient,
   user: UserPersonalData
 ): Promise<User> => {
-  return client.user.create({
+  return client.user.create({ 
     data: { ...user },
   });
 };

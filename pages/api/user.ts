@@ -22,7 +22,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const persistedUser = await createUser(prisma, user);
       res.statusCode = 201;
       res.json({ user: persistedUser });
-    } catch ({ errors, name }) {
+    } catch ({ errors, name, ...rest }) {
+      console.log(rest);
       res.statusCode = 400;
       res.json({ errors, name });
     }

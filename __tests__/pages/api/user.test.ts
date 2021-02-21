@@ -36,6 +36,7 @@ describe("/api/users", () => {
       expect(res.statusCode).toBe(200);
     });
   });
+  
   describe("POST", () => {
     let createUser: jest.SpyInstance<Promise<User>>;
 

@@ -7,7 +7,8 @@
     "build": "prisma migrate deploy --preview-feature && next build",
     "start": "next start",
     "test": "jest",
-    "watch": "jest --watch"
+    "watch": "jest --watch",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@prisma/client": "^2.16.1",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",
+    "@testing-library/cypress": "^7.0.3",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
     "@types/jest": "^26.0.20",

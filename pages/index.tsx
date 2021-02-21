@@ -10,20 +10,24 @@ const prisma = new PrismaClient();
 export default function Home({
   users,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [value, setValue] = React.useState({
-    name: "",
-    surname: "",
-    email: "",
-  });
-
-  const handleChange = (name: string) => (
-    event: React.ChangeEvent<HTMLInputElement>
-    //@ts-ignore
-  ) => setValue((value) => ({ ...value, [name]: event.target.value }));
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [surname, setSurname] = React.useState("");
+  const [disabled, setDisabled] = React.useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    return await axios.post("/api/user", { ...value });
+    setDisabled(true);
+    await axios
+      .post("/api/user", { name, email, surname })
+      .then(() => {
+        setName("");
+        setEmail("");
+        setSurname("");
+      })
+      //@ts-ignore
+      .catch((err) => alert(err))
+      .finally(() => setDisabled(false));
   };
 
   return (
@@ -31,22 +35,40 @@ export default function Home({
       <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <input name="name" onChange={handleChange("name")} required />
+          <input
+            name="name"
+            value={name}
+            //@ts-ignore
+            onChange={(e) => setName(e.target.value)}
+            disabled={disabled}
+            required
+          />
         </label>
         <label>
           Surname:
-          <input name="surname" onChange={handleChange("surname")} />
+          <input
+            value={surname}
+            name="surname"
+            //@ts-ignore
+            onChange={(e) => setSurname(e.target.value)}
+            disabled={disabled}
+          />
         </label>
         <label>
           Email:
           <input
             name="email"
             type="email"
-            onChange={handleChange("email")}
+            value={email}
+            //@ts-ignore
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={disabled}
             required
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={disabled}>
+          Submit
+        </button>
       </form>
       <div>{JSON.stringify(users)}</div>
     </>

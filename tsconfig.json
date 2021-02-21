@@ -23,5 +23,6 @@
     "jest.setup.js",
     "jest.config.js"
   ],
+  "types": ["cypress", "@testing-library/cypress"],
   "exclude": ["node_modules"]
 }

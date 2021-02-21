@@ -1,7 +1,11 @@
-import { PrismaClient, User } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { getAllUsers, createUser } from "../../src/db/user";
+import {
+  getAllUsers,
+  createUser,
+  createUserValidator,
+} from "../../src/db/user";
 
 const prisma = new PrismaClient();
 
@@ -12,9 +16,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.json({ users });
   }
   if (req.method === "POST") {
-    const user = req.body;
-    const persistedUser = await createUser(prisma, user);
-    res.statusCode = 201;
-    res.json({ user: persistedUser });
+    try {
+      const user = req.body;
+      createUserValidator(user);
+      const persistedUser = await createUser(prisma, user);
+      res.statusCode = 201;
+      res.json({ user: persistedUser });
+    } catch ({ errors, name }) {
+      res.statusCode = 400;
+      res.json({ errors, name });
+    }
   }
 };

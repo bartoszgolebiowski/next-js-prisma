@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/ initla render 1`] = `
+<body>
+  <div>
+    <form>
+      <label>
+        Name:
+        <input
+          name="name"
+          required=""
+        />
+      </label>
+      <label>
+        Surname:
+        <input
+          name="surname"
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          name="email"
+          required=""
+          type="email"
+        />
+      </label>
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+    <div>
+      [{"id":1,"email":"test1@gmail.com","name":"name1","surname":"surname1"},{"id":2,"email":"test2@gmail.com","name":"name2","surname":"surname2"}]
+    </div>
+  </div>
+</body>
+`;

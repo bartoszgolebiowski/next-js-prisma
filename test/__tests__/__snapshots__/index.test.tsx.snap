@@ -9,12 +9,14 @@ exports[`/ initla render 1`] = `
         <input
           name="name"
           required=""
+          value=""
         />
       </label>
       <label>
         Surname:
         <input
           name="surname"
+          value=""
         />
       </label>
       <label>
@@ -23,6 +25,7 @@ exports[`/ initla render 1`] = `
           name="email"
           required=""
           type="email"
+          value=""
         />
       </label>
       <button

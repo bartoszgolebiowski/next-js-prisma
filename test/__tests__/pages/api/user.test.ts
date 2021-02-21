@@ -1,14 +1,14 @@
 import { User } from "@prisma/client";
 import { createRequest, createResponse } from "node-mocks-http";
-import handler from "../../../pages/api/user";
-import * as userService from "../../../src/db/user";
+import handler from "../../../../pages/api/user";
+import * as userService from "../../../../src/db/user";
 
 import {
   createuserBody1,
   createuserBody2,
   createuserBody3,
   getAllUsersSample,
-} from "../../../test/samples/db";
+} from "../../../samples/db";
 
 jest.mock("@prisma/client", () => ({
   PrismaClient: jest.fn(),
@@ -36,7 +36,7 @@ describe("/api/users", () => {
       expect(res.statusCode).toBe(200);
     });
   });
-  
+
   describe("POST", () => {
     let createUser: jest.SpyInstance<Promise<User>>;
 

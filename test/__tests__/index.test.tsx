@@ -1,12 +1,12 @@
 import { User } from "@prisma/client";
-import { render, RenderResult, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
 
-import Home, { getStaticProps } from "../pages";
-import * as userService from "../src/db/user";
+import Home, { getStaticProps } from "../../pages";
+import * as userService from "../../src/db/user";
 
-import { createuserBody2, getAllUsersSample } from "../test/samples/db";
+import { createuserBody2, getAllUsersSample } from "../samples/db";
 
 jest.mock("@prisma/client", () => ({
   PrismaClient: jest.fn(),

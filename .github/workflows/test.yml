@@ -7,7 +7,7 @@ jobs:
   # tutaj podajemy klucz dla naszego job-a.
   test:
     # tutaj podajemy nazwe, jak pominiemy, to klucz jest nazwą job-a.
-    name: Unit tests & e2e
+    name: Unit tests
     # ustawiamy typ virtualnej maszyny na której załączony zostanie nasz job.
     runs-on: ubuntu-16.04
     steps:

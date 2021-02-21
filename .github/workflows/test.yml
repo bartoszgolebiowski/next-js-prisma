@@ -19,10 +19,3 @@ jobs:
       - name: Unit Tests
         # jednorazowy wywołanie wszystkich testów, bez flagą watchAll na false, żeby proces się zakończył po sprawdzeniu testów.
         run: npm test
-      - name: E2E Tests
-        # uzycie githubowej akcji z workshop-a, ta akcja załącza wszystkie testy selenium.
-        uses: cypress-io/github-action@v1
-        with:
-          # przekazywanie arugmentów do akcji.
-          start: npm run dev
-          wait-on: "http://localhost:3000"

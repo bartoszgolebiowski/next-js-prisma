@@ -6,21 +6,7 @@ type UserPersonalData = Prisma.UserGetPayload<{
 }>;
 
 export const getAllUsers = async (client: PrismaClient): Promise<User[]> => {
-  return client.user.findMany({
-    select: {
-      id: true,
-      surname: true,
-      name: true,
-      email: true,
-      posts: {
-        where: { title: "test" },
-        select: { title: true, createdAt: true },
-      },
-    },
-    where: {
-      name: "test",
-    },
-  });
+  return client.user.findMany();
 };
 
 const userPostValidator = Yup.object({

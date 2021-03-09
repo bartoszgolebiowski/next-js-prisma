@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma migrate deploy --preview-feature && next build",
+    "build": "prisma migrate reset --force --preview-feature && prisma migrate deploy --preview-feature && next build",
     "start": "next start",
     "test": "jest",
     "watch": "jest --watch",

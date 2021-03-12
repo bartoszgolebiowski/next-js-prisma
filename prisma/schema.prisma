@@ -21,6 +21,8 @@ model Post {
 model Profile {
   id     Int     @id @default(autoincrement())
   bio    String?
+  bio2   String?
+  bio3   String?
   user   User    @relation(fields: [userId], references: [id])
   userId Int     @unique
 }
